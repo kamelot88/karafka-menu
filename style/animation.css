@@ -1,0 +1,19 @@
+.hide-order-list {
+    left: 90vw;
+}
+.animation-left {
+    transition: left 1s ease-out;
+}
+.rotate-line {
+    rotate: 90deg;
+}
+.animation-rotate {
+    transition: rotate .5s ease-out;
+}
+.section-show {
+    overflow: hidden;
+    max-height: 1000px;
+}
+.animation-height {
+    transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);
+}
