@@ -11,9 +11,33 @@
     transition: rotate .5s ease-out;
 }
 .section-show {
-    overflow: hidden;
     max-height: 1000px;
+    overflow: auto;
 }
 .animation-height {
     transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);
+}
+.background {
+    background-color: #d1cbba;
+    transition: background-color .5s ease-out;
+}
+.blur {
+    backdrop-filter: blur(3px);
+    transition: backdrop-filter .5s ease-out;
+}
+
+/*! classes for color them */
+.background-them-body {
+    background: -webkit-linear-gradient(90deg,#ffffff,#cbf0ff,#93e3fd,#ffc5ab); 
+    background: linear-gradient(90deg,#ffffff,#cbf0ff,#93e3fd,#ffc5ab); 
+}
+.color-line {
+    background-color: #48719c;
+}
+.color-show-more {
+    border-color: #48719c;
+}
+.background-footer {
+    background: -webkit-linear-gradient(90deg,#32c5c5,#799ce4,#cc6683); 
+    background: linear-gradient(90deg,#32c5c5,#799ce4,#cc6683); 
 }

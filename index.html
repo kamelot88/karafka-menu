@@ -10,11 +10,19 @@
 </head>
 <body>
     <header>
+        <div id="blur"></div>
         <div class="wrap main_flex flex__jcontent_between">
             <div class="logo">
                 <img src="assets/logo.svg" alt="logo cafe Karafka">
             </div>
-            <div class="wrap-title main_flex flex__align-items_end">
+            <div class="wrap-title-check flex__align-items_center flex__jcontent_between">
+                <label class="switch">
+                    <input type="checkbox" id="radio">
+                    <span class="slider round">
+                        <svg class="night MuiSvgIcon-root-1708 jss1676 jss1677" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M8.972 6.661c0 6.044 4.806 10.965 10.804 11.15A9.749 9.749 0 0111.761 22C6.371 22 2 17.63 2 12.239c0-4.683 3.298-8.596 7.698-9.542a11.125 11.125 0 00-.726 3.964zm5.331-2.407L15.536 2l1.232 2.254 2.254 1.232-2.254 1.233-1.232 2.253-1.233-2.253-2.253-1.233 2.253-1.232zm4.754 6.725l.986-1.803.986 1.803 1.803.986-1.803.986-.986 1.803-.986-1.803-1.803-.986 1.803-.986z" id="a"></path></svg>
+                        <svg class="day MuiSvgIcon-root-1945 jss1913" focusable="false" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19a1 1 0 011 1v2a1 1 0 11-2 0v-2a1 1 0 011-1zm-6.364-2.05a.999.999 0 111.414 1.414l-1.414 1.414a.997.997 0 01-1.414 0 .999.999 0 010-1.414zm11.314 0a.999.999 0 011.414 0l1.414 1.414a.999.999 0 11-1.414 1.414l-1.414-1.414a.999.999 0 010-1.414zM12 6c3.309 0 6 2.691 6 6s-2.691 6-6 6-6-2.691-6-6 2.691-6 6-6zm10 5a1 1 0 110 2h-2a1 1 0 110-2zM4 11a1 1 0 110 2H2a1 1 0 110-2zm14.364-6.779a1 1 0 011.414 1.414L18.364 7.05a.997.997 0 01-1.414 0 .999.999 0 010-1.414zm-14.142 0a1 1 0 011.414 0L7.05 5.636A.999.999 0 115.636 7.05L4.222 5.635a.999.999 0 010-1.414zM12 1a1 1 0 011 1v2a1 1 0 11-2 0V2a1 1 0 011-1z" id="a"></path></svg>
+                    </span>
+                </label>
                 <h1>Menu</h1>
             </div>
             <div class="order">
@@ -63,21 +71,27 @@
         </section> -->
     </main>
     <footer>
-        <div class="wrap">
-        <!-- <div class="social main_flex flex__jcontent_between">
-                <a href="mailto: cafekarafka@gmail.com" target="_blank">
-                    <img src="assets/email.svg" alt="icon email">
-                </a>
-                <a href="">
-                    <img src="assets/instagram.svg" alt="icon instagram">
-                </a>
-                <a href="https://www.facebook.com/karafkapleszew" target="_blank">
-                    <img src="assets/facebook.svg" alt="icon facebook">
-                </a>
-            </div> -->
-        </div>
+        <div class="wrap foot main_flex flex__align-items_center flex__jcontent_around">
+            <div class="logo-foot main_flex flex__align-items_center flex__jcontent_center">
+                <img src="assets/logo-foot.png" alt="logo-image">
+            </div>
+            <div class="social main_flex flex__jcontent_between">
+                    <a href="https://goo.gl/maps/VeyEVWWJxxStHzAE6" target="_blank">
+                        <img src="assets/location.png" alt="icon location">
+                    </a>
+                    <a href="mailto: cafekarafka@gmail.com" target="_blank">
+                        <img src="assets/email.svg" alt="icon email">
+                    </a>
+                    <a href="tel:+48501 335 973">
+                        <img src="assets/phone.svg" alt="icon phone">
+                    </a>
+                    <a href="https://www.facebook.com/karafkapleszew" target="_blank">
+                        <img src="assets/facebook.svg" alt="icon facebook">
+                    </a>
+                </div>
+            </div>
     </footer>
-
+    <script src="appElemFood.js"></script>
     <script src="app.js"></script>
 </body>
 </html>
