@@ -12,7 +12,6 @@
 }
 .section-show {
     max-height: 1000px;
-    overflow: auto;
 }
 .animation-height {
     transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);
@@ -40,4 +39,21 @@
 .background-footer {
     background: -webkit-linear-gradient(90deg,#32c5c5,#799ce4,#cc6683); 
     background: linear-gradient(90deg,#32c5c5,#799ce4,#cc6683); 
+}
+.color-title {
+    color: #212196;
+}
+.color-title-order {
+    color: #c40885;
+}
+.background-header-them {
+    backdrop-filter: blur(4px);
+}
+/*! END classes for color them */
+
+.show-block {
+    display: block;
+}
+.body-overflow {
+    overflow: hidden;
 }

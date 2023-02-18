@@ -1,9 +1,9 @@
 'use script';
 //! show order
-const btnsOrder = document.querySelector('[data-order=open-list]'),
+const btnsOrderOpen = document.querySelector('[data-order=open-list]'),
       listOrderWrap = document.querySelector('.list-order-wrap');
 
-btnsOrder.addEventListener('click', () => {
+btnsOrderOpen.addEventListener('click', () => {
     if(listOrderWrap.classList.contains('hide-order-list')) {
         listOrderWrap.classList.remove('hide-order-list');
         listOrderWrap.classList.add('animation-left');
@@ -35,6 +35,18 @@ collectionSection.forEach(item => {
     })
 })
 
+const collectionTitleSection = document.querySelectorAll('.title-section');
+collectionTitleSection.forEach(elem => {
+    elem.addEventListener('click', (event) => {
+        let sectionParent = event.target.closest('section');
+        let verticalLine = sectionParent.children[0].children[1];
+        showSection(sectionParent);
+        rotateLine(verticalLine);
+    })
+})
+
+
+
 function showSection(activElem) {
     activElem.classList.toggle('section-show');
     activElem.classList.toggle('animation-height');
@@ -43,13 +55,10 @@ function rotateLine(elemLine) {
     if(elemLine.classList.contains('rotate-line')) {
         elemLine.classList.remove('rotate-line');
         elemLine.classList.add('animation-rotate');
-        // document.querySelector('section').classList.add('animation-height');
     } else {
         elemLine.classList.remove('animation-rotate');
         elemLine.classList.add('rotate-line');
         elemLine.classList.add('animation-rotate');
-        // document.querySelector('section').classList.remove('animation-height');
-        // document.querySelector('section').classList.add('animation-height');
     }
 }
 
@@ -63,17 +72,9 @@ let radio = document.querySelector('#radio');
 let showMoreCollection = document.querySelectorAll('.show-more');
 let lineCollection = document.querySelectorAll('.line');
 
-radio.addEventListener('change', ()=>{
-if(radio.checked) {
-    document.querySelector('body').classList.add('background-them-body');
-    for(let elem of showMoreCollection) {
-        elem.classList.add('color-show-more');
-    }
-    for(let line of lineCollection) {
-        line.classList.add('color-line');
-    }
-    document.querySelector('.foot').classList.add('background-footer');
-} else {
+
+window.addEventListener('change', ()=>{
+if(!radio.checked) {
     document.querySelector('body').classList.remove('background-them-body');
     for(let elem of showMoreCollection) {
         elem.classList.remove('color-show-more');
@@ -82,26 +83,91 @@ if(radio.checked) {
         line.classList.remove('color-line');
     }
     document.querySelector('.foot').classList.remove('background-footer');
+    for(let title of document.querySelectorAll('.title-section')) {
+        title.classList.remove('color-title');
+    }
+    document.querySelector('.btn-show-list').classList.remove('background-footer');
+    document.querySelector('.list-order').classList.remove('background-footer');
+    document.querySelector('.list-order>h3').classList.remove('color-title-order');
+} else {
+    document.querySelector('body').classList.add('background-them-body');
+    for(let elem of showMoreCollection) {
+        elem.classList.add('color-show-more');
+    }
+    for(let line of lineCollection) {
+        line.classList.add('color-line');
+    }
+    document.querySelector('.foot').classList.add('background-footer');
+    for(let title of document.querySelectorAll('.title-section')) {
+        title.classList.add('color-title');
+    }
+    document.querySelector('.btn-show-list').classList.add('background-footer');
+    document.querySelector('.list-order').classList.add('background-footer');
+    document.querySelector('#titleOrder').classList.add('color-title-order');
+    document.querySelector('header > .wrap ').classList.remove('background');
+    document.querySelector('header > .wrap ').classList.add('background-header-them');
 }
 })
 
 
-let round = document.querySelector('.slider:before');
-
-
-
 //! Scroll
-window.addEventListener('scroll', function() {
-    if(pageYOffset > 20) {
-     document.querySelector('header > .wrap').classList.add('background');
-     document.querySelector('#blur').classList.add('blur');
-    } else {
-     document.querySelector('header > .wrap').classList.remove('background');
-     document.querySelector('#blur').classList.remove('blur');
+function scrollTo() {
+    window.addEventListener('scroll', function() {
+        if(pageYOffset > 20) {
+            document.querySelector('header > .wrap').classList.add('background');
+            document.querySelector('#blur').classList.add('blur');
+            if(radio.checked) {
+                document.querySelector('header > .wrap').classList.remove('background');
+                document.querySelector('header > .wrap').classList.add('background-header-them');
+            }
+        } else {
+            document.querySelector('header > .wrap').classList.remove('background');
+            document.querySelector('#blur').classList.remove('blur');
+        }
+    });
+}
+
+scrollTo();
+
+
+//! Add order
+const btnsOrderAdd = document.querySelectorAll('[data-order=add-order]');
+
+btnsOrderAdd.forEach(btnElem => {
+    btnElem.addEventListener('click', (e) => {
+        let parendMeal = e.target.closest('.item-wrap-dish');
+        let nameMeal = parendMeal.children[0].textContent;
+        let price = parendMeal.children[1].children[1].children[0].textContent;
+        document.querySelector('.modal__title').innerHTML = `Dodać do zamówienia <b>${nameMeal}</b>?`;
+        document.querySelector('.price-modal').innerHTML = `Cena - <b>${price} zł</b>`;
+        document.querySelector('.price-modal').innerHTML = `Cena - <b>${price} zł</b>`;
+        showModal();
+        let countMeal = document.querySelector('[name=count-meal]').value;
+        document.querySelector('[name=btn_yes]').addEventListener('click', (e) => {
+            e. preventDefault();
+            document.querySelector('.order').innerHTML = `
+                <p>${i} ${nameMeal} ${countMeal} ${countMeal * price}</p>
+            `;
+        })
+        document.querySelector('[name=btn_no]').addEventListener('click', (e) => {
+            e. preventDefault();
+            countMeal = '';
+            hideModal();
+        })
+    })
+})
+document.querySelector('.modal').addEventListener('click', (e) => {
+    if(!(e.target.matches('.modal__dialog')) && e.target.matches('.modal') || e.target.matches('.modal__close')) {
+        hideModal();
     }
-   });
+})
+function showModal() {
+    document.querySelector('.modal').classList.add('show-block');
+    document.querySelector('body').classList.add('body-overflow');
+}
+function hideModal() {
+    document.querySelector('.modal').classList.remove('show-block');
+    document.querySelector('body').classList.remove('body-overflow');
+}
 
 
-// for(let elem of lineCollection) {
-//     elem.classList.remove('color-line');
-// }

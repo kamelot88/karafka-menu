@@ -239,7 +239,7 @@ new foodSection(
 
         new MenuDish(
             "Ruskie inaczej",
-            "Pierogi z oliwą, czosnkiem, grana padano (twardy włoski ser) i natką.",
+            "Pierogi z oliwą, czosnkiem, Grana Padano (twardy włoski ser) i natką.",
             "21,50",
             'section.vareniks'
         ).render();
@@ -249,4 +249,235 @@ new foodSection(
             "Podąwane z okrasą lub oliwą.",
             "22,50",
             'section.vareniks'
+        ).render();
+
+        new MenuDish(
+            "Pierogi szpinakowe z kozim syrem",
+            "Podąwane z oliwą czosnkiem, Grana Padano (twardy włoski ser) i natka.",
+            "22,50",
+            'section.vareniks'
+        ).render();
+
+        new MenuDish(
+            "Pierogi mięsne z okrasą",
+            "Pierogi mięsne z okrasą.",
+            "22,50",
+            'section.vareniks'
+        ).render();
+
+        new MenuDish(
+            "Pierogi z serem na słodko",
+            "Pierogi z serem na słodko.",
+            "19,50",
+            'section.vareniks'
+        ).render();
+
+new foodSection(
+    "Makarony",
+    "pasta",
+    "main",
+    " (400-450g)",
+).render();
+
+        new MenuDish(
+            "Tagliatelle ze szpinakiem kurczakiem lub suszonymi pomidorami",
+            "Zielonym groszkiem w sosie śmietanowym.",
+            "29,50",
+            'section.pasta'
+        ).render();
+
+        new MenuDish(
+            "Tagliatelle z grillowanym łososiem",
+            "Suszonymi pomidorami w sosie winnym.",
+            "30,50",
+            'section.pasta'
+        ).render();
+
+        new MenuDish(
+            "Tagliatelle z grillowanym łososiem",
+            "Suszonymi pomidorami w sosie winnym.",
+            "30,50",
+            'section.pasta'
+        ).render();
+
+        new MenuDish(
+            "Spaghetti Bolognese",
+            "Makaron, sos pomidorowy, ser.",
+            "27,50",
+            'section.pasta'
+        ).render();
+
+new foodSection(
+    "Naleśniki wytrawne",
+    "pancakes",
+    "main",
+    "",
+).render();
+
+        new MenuDish(
+            "Gyros",
+            "Karkówka z surówką i sosami.",
+            "29,50",
+            'section.pancakes'
+        ).render();
+
+        new MenuDish(
+            "Shaorma",
+            "Kawałki kurczaka z surówką i sosami.",
+            "28,50",
+            'section.pancakes'
+        ).render();
+
+        new MenuDish(
+            "Bolognese z tacosami",
+            "Mięso bolognese z serem, fasolą, tacosy, sos.",
+            "25,50",
+            'section.pancakes'
+        ).render();
+
+        new MenuDish(
+            "Kebab z kurczaka po grecku",
+            "Dwa placki naleśnikowe z marynowanym kurczakiem, warzywa, sos tzatzyki.",
+            "26,50",
+            'section.pancakes'
+        ).render();
+
+        new MenuDish(
+            "Taco meksykańskie",
+            "Dwa różne placki kukurydziane, bolognese, karkówka, świeże warzywa, sosy.",
+            "28,50",
+            'section.pancakes'
+        ).render();
+
+        new MenuDish(
+            "Mięsno-szpinakowy",
+            "Mięso mielone wieprzowe, szpinak, sos.",
+            "24,50",
+            'section.pancakes'
+        ).render();
+
+        new MenuDish(
+            "Cesare z kurczakiem",
+            "Kurczak z serem, sos cesarski, sałata, grzanki.",
+            "25,50",
+            'section.pancakes'
+        ).render();
+
+new foodSection(
+    "Naleśniki vege",
+    "pancakes-vege",
+    "main",
+    "",
+).render();
+
+        new MenuDish(
+            "Szpinak, ser rokpol lub feta, sos",
+            "Szpinak, ser rokpol lub feta, sos.",
+            "23,50",
+            'section.pancakes-vege'
+        ).render();
+
+        new MenuDish(
+            "Szpinak, mozzarella, suszone pomidory, sos",
+            "Szpinak, mozzarella, suszone pomidory, sos.",
+            "25,50",
+            'section.pancakes-vege'
+        ).render();
+
+new foodSection(
+    "Naleśniki zapiekane",
+    "pancakes-zapiekan",
+    "main",
+    "",
+).render();
+
+        new MenuDish(
+            "Lasagne naleśnikowa mięśna",
+            "Z sosem pomidorowym.",
+            "29,50",
+            'section.pancakes-zapiekan'
+        ).render();
+
+new foodSection(
+    "Pancake ",
+    "pan-cake",
+    "main",
+    " (5 szt.)",
+).render();
+
+        new MenuDish(
+            "Nutella z wiśniami/malinami",
+            "Nutella z syropem wiśniowym/syropem malinowym.",
+            "20,50",
+            'section.pan-cake'
+        ).render();
+        
+        new MenuDish(
+            "Oreo z sosami czekoladowymi",
+            "Sos z czarnej i białej czekolady, bita śmietana.",
+            "20,50",
+            'section.pan-cake'
+        ).render();
+
+        new MenuDish(
+            "Amerykański",
+            "Syrop klonowy, bita śmietana, owoce.",
+            "20,50",
+            'section.pan-cake'
+        ).render();
+
+new foodSection(
+    "Naleśniki słodkie",
+    "pancake-sweet",
+    "main",
+    "",
+).render();
+
+        new MenuDish(
+            "Z cukrem pudrem",
+            "Z cukrem pudrem.",
+            "9,50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Z dżemem/konfiturą",
+            "Z dżemem/konfiturą.",
+            "11,50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Jesienny z sosem śliwkowym",
+            "Mascarpone, prażone jabłka.",
+            "20,50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Nutella z wiśniami w sosie czekoladowym",
+            "Sos czekoladowy i śmietankowy, bita śmietana.",
+            "20,50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Karmelizowane banany",
+            "Mus bananowo-czekoladowy, orzechy włoskie, bita śmietana.",
+            "20,50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Sernikowy",
+            "Z sosem truskawkowym sos waniliowy, bita śmietana.",
+            "18,50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Sernikowy",
+            "Z sosem malinowym/wiśniowym, bezy, bita śmietana.",
+            "20,50 / 18,50",
+            'section.pancake-sweet'
         ).render();
