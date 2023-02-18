@@ -218,11 +218,11 @@ header > .wrap {
 .logo > img {
     width: 25vw;
 }
-.order {
+.order-head {
     display: flex;
     position: relative;
 }
-.order img {
+.order-head img {
     width: 20vw;
     height: 6vh;
     margin: auto;
@@ -284,7 +284,30 @@ main > .wrap {
 .list-order h3 {
     color: #1c9cb4;
     font-size: 24px
-} 
+}
+.order {
+  display: flex;
+  flex-direction: column;
+}
+.order>.order-elem {
+  display: flex;
+  justify-content: start;
+  width: 90%;
+}
+.order>.order-elem>div{
+  width: 70%;
+  text-align: start;
+  margin-right: 30px;
+}
+.text-count {
+  margin-right: 30px;
+}
+.text-sum {
+  margin-right: 30px;
+}
+.order>.order-elem>img{
+  width: 20px
+}
 h1 {
   font-size: 32px;
   font-weight: 900;

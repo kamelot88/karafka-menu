@@ -145,9 +145,16 @@ btnsOrderAdd.forEach(btnElem => {
         let countMeal = document.querySelector('[name=count-meal]').value;
         document.querySelector('[name=btn_yes]').addEventListener('click', (e) => {
             e. preventDefault();
-            document.querySelector('.order').innerHTML = `
-                <p>${i} ${nameMeal} ${countMeal} ${countMeal * price}</p>
+            document.querySelector('.order').innerHTML += `
+            <div class="order-elem">
+                <span></span>
+                <div>${nameMeal}</div>
+                <p class="text-count">${countMeal}</p>
+                <p class="text-sum">${parseFloat(price) * countMeal}zł</p>
+                <img src="assets/urn.svg" alt="">
+            </div>
             `;
+            hideModal();
         })
         document.querySelector('[name=btn_no]').addEventListener('click', (e) => {
             e. preventDefault();
