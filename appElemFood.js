@@ -477,7 +477,14 @@ new foodSection(
 
         new MenuDish(
             "Sernikowy",
-            "Z sosem malinowym/wiśniowym, bezy, bita śmietana.",
-            "20.50 / 18,50",
+            "Z sosem malinowym.",
+            "20.50",
+            'section.pancake-sweet'
+        ).render();
+
+        new MenuDish(
+            "Sernikowy",
+            "Z wiśniowym, bezy, bita śmietana.",
+            "18.50",
             'section.pancake-sweet'
         ).render();

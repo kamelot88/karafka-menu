@@ -2,10 +2,15 @@
 //! show order
 const btnsOrderOpen = document.querySelector('[data-order=open-list]'),
       listOrderWrap = document.querySelector('.list-order-wrap'),
-      imgOrder = document.querySelector('.order-head > img');
+      imgOrder = document.querySelector('.order-head');
 
 btnsOrderOpen.addEventListener('click', showOrder);
-imgOrder.addEventListener('click', showOrder);
+imgOrder.addEventListener('click', (e) => {
+    if(e.target.matches('.count-order') || e.target.matches('img')) {
+    showOrder();
+    }
+})
+        
 
 function showOrder() {
     if(listOrderWrap.classList.contains('hide-order-list')) {
@@ -89,6 +94,11 @@ if(!radio.checked) {
     document.querySelector('.btn-show-list').classList.remove('background-footer');
     document.querySelector('.list-order').classList.remove('background-footer');
     document.querySelector('.list-order>h3').classList.remove('color-title-order');
+    document.querySelector('#titleOrder').style.color='#9071a3';
+    document.querySelector('.total').style.color='#9071a3';
+    document.querySelectorAll('[data-order=add-order]').forEach(elem => {
+        elem.style.backgroundColor='white';
+    })
 } else {
     document.querySelector('body').classList.add('background-them-body');
     for(let elem of showMoreCollection) {
@@ -106,6 +116,11 @@ if(!radio.checked) {
     document.querySelector('#titleOrder').classList.add('color-title-order');
     document.querySelector('header > .wrap ').classList.remove('background');
     document.querySelector('header > .wrap ').classList.add('background-header-them');
+    document.querySelector('#titleOrder').style.color='#ffe700';
+    document.querySelector('.total').style.color='#ffe700';
+    document.querySelectorAll('[data-order=add-order]').forEach(elem => {
+        elem.style.backgroundColor='#b5c4e0';
+    })
 }
 })
 
@@ -128,58 +143,62 @@ function scrollTo() {
 scrollTo();
 
 //! Add order
-const btnsOrderAdd = document.querySelectorAll('[data-order=add-order]');
-class orderElem {
-    constructor(nameMeal, price, countMeal, parendSelector) {
-        this.nameMeal = nameMeal;
-        this.price = price;
-        this.countMeal = countMeal;
-        this.parend = document.querySelector(parendSelector);
-    }
-    render() {
-        const element = document.createElement('div');
-        element.classList.add('order-elem');
-        element.innerHTML = `
-            <span></span>
-            <div>${this.nameMeal}</div>
-            <p class="text-count">${this.countMeal}</p>
-            <p class="text-sum">${Number(this.price) * this.countMeal}zł</p>
-            <img src="assets/urn.svg" alt="icon urn">
-        `;
-        this.parend.append(element);
-    }
-}
+const orderDB = {
+    nameMeal: [],
+    countMeal: [],
+    priceMeal: []
+};
 
-btnsOrderAdd.forEach(btnElem => {
+const btnsOrderAdd = document.querySelectorAll('[data-order=add-order]'),
+      form = document.querySelector('.modal__content>form');
+
+for(let btnElem of btnsOrderAdd) {
     btnElem.addEventListener('click', (e) => {
         let parendMeal = e.target.closest('.item-wrap-dish');
         let nameMeal = parendMeal.children[0].textContent;
-        let price = parendMeal.children[1].children[1].children[0].textContent;
+        let priceMeal = parendMeal.children[1].children[1].children[0].textContent;
         document.querySelector('.modal__title').innerHTML = `Dodać do zamówienia <b>${nameMeal}</b>?`;
-        document.querySelector('.price-modal').innerHTML = `Cena - <b>${price} zł</b>`;
-        document.querySelector('.price-modal').innerHTML = `Cena - <b>${price} zł</b>`;
+        document.querySelector('.price-modal').innerHTML = `Cena - <b>${priceMeal} zł</b>`;
         showModal();
-        let countMeal = document.querySelector('[name=count-meal]').value;
-        document.querySelector('[name=btn_yes]').addEventListener('click', (e) => {
-            e. preventDefault();
-            new orderElem(
-                `${nameMeal}`,
-                `${price}`,
-                `${countMeal}`,
-                `.list-order>.order`
-            ).render();
-            hideModal();
-            sumOrder();
-        })
-        document.querySelector('[name=btn_no]').addEventListener('click', (e) => {
-            e. preventDefault();
-            countMeal = '';
-            hideModal();
-        })
+       
+            
+            orderDB.nameMeal.push(nameMeal);
+            orderDB.priceMeal.push(priceMeal);
     })
+}
+
+form.addEventListener('submit', (event) => {
+    event.preventDefault();
+    let countMeal = document.querySelector('[type="number"]').value;
+    orderDB.countMeal.push(countMeal);
+    createOrderList();
+    addNumerList();
+    sumOrder();
+    hideModal();
+    event.target.reset();
+    console.log(orderDB);
 })
+
+function createOrderList() {
+    let parent = document.querySelector('.list-order>.order');
+    parent.innerHTML = "";
+    orderDB.nameMeal.forEach((position, i) => {
+        parent.innerHTML += `
+        <div class="order-elem">
+            <span></span>
+            <div>${position}</div>
+            <p class="text-count">${orderDB.countMeal[i]}</p>
+            <p class="text-sum">${Number(orderDB.priceMeal[i]) * orderDB.countMeal[i]}zł</p>
+            <img src="assets/urn.svg" alt="icon urn"></img>
+        </div>
+        `;
+    });
+}
+
 document.querySelector('.modal').addEventListener('click', (e) => {
-    if(!(e.target.matches('.modal__dialog')) && e.target.matches('.modal') || e.target.matches('.modal__close')) {
+    if(!(e.target.matches('.modal__dialog')) && e.target.matches('.modal') || e.target.matches('.modal__close') || e.target.matches('.btn_no')) {
+        orderDB.nameMeal.pop();
+        orderDB.priceMeal.pop();
         hideModal();
     }
 })
@@ -191,13 +210,16 @@ function hideModal() {
     document.querySelector('.modal').classList.remove('show-block');
     document.querySelector('body').classList.remove('body-overflow');
 }
+
 //! total sum order
 function sumOrder() {
     const totalOrder = document.querySelector('.total');
+    const countOrder = document.querySelector('.count-order');
     let order = document.querySelector('.order');
     if(order.childNodes.length === 1) {
         let content = parseFloat(order.firstElementChild.children[3].textContent);
         totalOrder.textContent = `Podsumowanie zamówienia: ${content}zł`;
+        countOrder.textContent = `${content}zł`;
     } else if(order.childNodes.length > 1) {
         let orders = order.children;
         let content = 0;
@@ -205,18 +227,46 @@ function sumOrder() {
             content += parseFloat(elem.children[3].textContent);
         }
         totalOrder.textContent = `Podsumowanie zamówienia: ${content}zł`;
+        countOrder.textContent = `${content}zł`;
     } else {
         totalOrder.textContent = ``;
+        countOrder.textContent = `0zł`;
     }
 }
-
-
 
 //! Remove order
 document.querySelector('.order').addEventListener('click', (e) => {
     if(e.target.matches('.order-elem > img')) {
         let orderElem = e.target.closest('.order-elem');
+        let position = parseFloat(orderElem.children[0].textContent);
+        orderDB.nameMeal.splice(position-1, 1);
+        orderDB.countMeal.splice(position-1, 1);
+        orderDB.priceMeal.splice(position-1, 1);
         orderElem.remove();
-        sumOrder()
+        sumOrder();
+        addNumerList();
     }
+})
+
+//! add numer list-order
+function addNumerList() {
+    let order = document.querySelector('.order');
+    let orders = order.children;
+    let i = 1;
+    for(let elem of orders) {
+        elem.children[0].textContent = `${i}.`;
+        i++;
+    }
+}
+
+
+
+document.querySelector('.number-minus').addEventListener('click', (e) => {
+    e.target.nextElementSibling.stepDown(); 
+    // e.target.nextElementSibling.onchange();
+})
+    
+document.querySelector('.number-plus').addEventListener('click', (e) => {
+    e.target.previousElementSibling.stepUp(); 
+    // e.target.previousElementSibling.onchange();
 })
