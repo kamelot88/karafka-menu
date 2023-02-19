@@ -176,7 +176,6 @@ form.addEventListener('submit', (event) => {
     sumOrder();
     hideModal();
     event.target.reset();
-    console.log(orderDB);
 })
 
 function createOrderList() {
