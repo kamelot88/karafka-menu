@@ -1,19 +1,24 @@
 'use script';
 //! show order
 const btnsOrderOpen = document.querySelector('[data-order=open-list]'),
-      listOrderWrap = document.querySelector('.list-order-wrap');
+      listOrderWrap = document.querySelector('.list-order-wrap'),
+      imgOrder = document.querySelector('.order-head > img');
 
-btnsOrderOpen.addEventListener('click', () => {
+btnsOrderOpen.addEventListener('click', showOrder);
+imgOrder.addEventListener('click', showOrder);
+
+function showOrder() {
     if(listOrderWrap.classList.contains('hide-order-list')) {
         listOrderWrap.classList.remove('hide-order-list');
         listOrderWrap.classList.add('animation-left');
+        document.querySelector('body').classList.add('body-overflow');
     } else {
         listOrderWrap.classList.remove('animation-left');
         listOrderWrap.classList.add('hide-order-list');
         listOrderWrap.classList.add('animation-left');
+        document.querySelector('body').classList.remove('body-overflow');
     }
-    
-});
+}
 
 //! Show section food 
 const collectionSection = document.querySelectorAll('section');
@@ -62,11 +67,6 @@ function rotateLine(elemLine) {
     }
 }
 
-
-
-
-
-
 //! style theme
 let radio = document.querySelector('#radio');
 let showMoreCollection = document.querySelectorAll('.show-more');
@@ -109,7 +109,6 @@ if(!radio.checked) {
 }
 })
 
-
 //! Scroll
 function scrollTo() {
     window.addEventListener('scroll', function() {
@@ -126,12 +125,30 @@ function scrollTo() {
         }
     });
 }
-
 scrollTo();
-
 
 //! Add order
 const btnsOrderAdd = document.querySelectorAll('[data-order=add-order]');
+class orderElem {
+    constructor(nameMeal, price, countMeal, parendSelector) {
+        this.nameMeal = nameMeal;
+        this.price = price;
+        this.countMeal = countMeal;
+        this.parend = document.querySelector(parendSelector);
+    }
+    render() {
+        const element = document.createElement('div');
+        element.classList.add('order-elem');
+        element.innerHTML = `
+            <span></span>
+            <div>${this.nameMeal}</div>
+            <p class="text-count">${this.countMeal}</p>
+            <p class="text-sum">${Number(this.price) * this.countMeal}zł</p>
+            <img src="assets/urn.svg" alt="icon urn">
+        `;
+        this.parend.append(element);
+    }
+}
 
 btnsOrderAdd.forEach(btnElem => {
     btnElem.addEventListener('click', (e) => {
@@ -145,16 +162,14 @@ btnsOrderAdd.forEach(btnElem => {
         let countMeal = document.querySelector('[name=count-meal]').value;
         document.querySelector('[name=btn_yes]').addEventListener('click', (e) => {
             e. preventDefault();
-            document.querySelector('.order').innerHTML += `
-            <div class="order-elem">
-                <span></span>
-                <div>${nameMeal}</div>
-                <p class="text-count">${countMeal}</p>
-                <p class="text-sum">${parseFloat(price) * countMeal}zł</p>
-                <img src="assets/urn.svg" alt="">
-            </div>
-            `;
+            new orderElem(
+                `${nameMeal}`,
+                `${price}`,
+                `${countMeal}`,
+                `.list-order>.order`
+            ).render();
             hideModal();
+            sumOrder();
         })
         document.querySelector('[name=btn_no]').addEventListener('click', (e) => {
             e. preventDefault();
@@ -176,5 +191,32 @@ function hideModal() {
     document.querySelector('.modal').classList.remove('show-block');
     document.querySelector('body').classList.remove('body-overflow');
 }
+//! total sum order
+function sumOrder() {
+    const totalOrder = document.querySelector('.total');
+    let order = document.querySelector('.order');
+    if(order.childNodes.length === 1) {
+        let content = parseFloat(order.firstElementChild.children[3].textContent);
+        totalOrder.textContent = `Podsumowanie zamówienia: ${content}zł`;
+    } else if(order.childNodes.length > 1) {
+        let orders = order.children;
+        let content = 0;
+        for(let elem of orders) {
+            content += parseFloat(elem.children[3].textContent);
+        }
+        totalOrder.textContent = `Podsumowanie zamówienia: ${content}zł`;
+    } else {
+        totalOrder.textContent = ``;
+    }
+}
 
 
+
+//! Remove order
+document.querySelector('.order').addEventListener('click', (e) => {
+    if(e.target.matches('.order-elem > img')) {
+        let orderElem = e.target.closest('.order-elem');
+        orderElem.remove();
+        sumOrder()
+    }
+})

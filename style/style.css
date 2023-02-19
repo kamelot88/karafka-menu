@@ -254,19 +254,20 @@ main > .wrap {
 }
 .list-order-wrap {
     position: fixed;
-    z-index: 15;
-    top: 13vh;
+    z-index: 20;
+    top: 11vh;
     left: 0;
     width: 100vw;
 }
 .list-order {
     width: 90vw;
-    min-height: 82vh;
+    min-height: 89vh;
     padding: 10px;
     background: #FDFBF5;
     box-shadow: 0px 0.938872px 1.87774px rgba(40, 41, 61, 0.04), 0px 3.75549px 7.51098px rgba(96, 97, 112, 0.16);
     border-radius: 15px 0 0 15px;
     opacity: .95;
+    border: 1px solid #7b7b86;
 }
 .btn-show-list {
     width: 10vw;
@@ -275,38 +276,52 @@ main > .wrap {
     backdrop-filter: blur(1px);
     box-shadow: 0px 0.938872px 1.87774px rgba(40, 41, 61, 0.04), 0px 3.75549px 7.51098px rgba(96, 97, 112, 0.16);
     border-radius: 40px 0 0 40px;
-    border: none;
+    border-color: #7b7b86;
+    border-bottom: 1px solid;
+    border-top: 1px solid;
+    border-left: 1px solid;
     opacity: .75;
 }
 .btn-show-list img {
     width: 5vw;
 }
 .list-order h3 {
-    color: #1c9cb4;
-    font-size: 24px
+    color: #9071a3;
+    font-size: 22px
 }
 .order {
   display: flex;
   flex-direction: column;
+  width: 100%;
+  height: 77vh;
+  overflow-y: scroll;
+}
+.total {
+  font-size: 20px;
+  color: #9071a3;
 }
 .order>.order-elem {
   display: flex;
-  justify-content: start;
-  width: 90%;
+  justify-content: flex-start;
+  align-items: flex-start;
+  width: 100%;
+  margin-bottom: 10px;
 }
 .order>.order-elem>div{
-  width: 70%;
+  width: 55%;
   text-align: start;
-  margin-right: 30px;
+  margin-right: 15px;
 }
 .text-count {
-  margin-right: 30px;
+  margin-right: 15px;
+  width: 6%;
 }
 .text-sum {
-  margin-right: 30px;
+  margin-right: 25px;
+  width: 17%;
 }
 .order>.order-elem>img{
-  width: 20px
+  width: 20px;
 }
 h1 {
   font-size: 32px;
@@ -485,7 +500,7 @@ footer > .wrap {
   position: fixed;
   top: 0;
   left: 0;
-  z-index: 18;
+  z-index: 20;
   display: none;
   width: 100%;
   height: 100%;
@@ -506,7 +521,7 @@ footer > .wrap {
 }
 .modal__dialog {
   position: absolute;
-  z-index: 20;
+  z-index: 21;
   top: 25%;
   right: 0;
   left: 0;
