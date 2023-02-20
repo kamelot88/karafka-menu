@@ -35,7 +35,9 @@ for(let line of lineVerticalCol) {
 } 
 
 collectionSection.forEach(item => {
+    
     item.addEventListener('click', (event) => {
+        rotateLine(verticalLine);
         if(event.target.matches('.show-more') || event.target.matches('.line')) {
             let sectionParent = event.target.closest('section');
             let verticalLine = sectionParent.children[0].children[1];
@@ -99,6 +101,10 @@ if(!radio.checked) {
     document.querySelectorAll('[data-order=add-order]').forEach(elem => {
         elem.style.backgroundColor='white';
     })
+    document.querySelector('.modal__content').classList.remove('background-footer');
+    document.querySelectorAll('.them').forEach(elem => {
+        elem.style.backgroundColor='white';
+    })
 } else {
     document.querySelector('body').classList.add('background-them-body');
     for(let elem of showMoreCollection) {
@@ -121,6 +127,11 @@ if(!radio.checked) {
     document.querySelectorAll('[data-order=add-order]').forEach(elem => {
         elem.style.backgroundColor='#b5c4e0';
     })
+    document.querySelector('.modal__content').classList.add('background-footer');
+    document.querySelectorAll('.them').forEach(elem => {
+        elem.style.backgroundColor='#b5c4e0';
+    })
+
 }
 })
 

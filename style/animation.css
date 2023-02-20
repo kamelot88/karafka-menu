@@ -11,7 +11,7 @@
     transition: rotate .5s ease-out;
 }
 .section-show {
-    max-height: 1000px;
+    max-height: 2000px;
 }
 .animation-height {
     transition: max-height 0.5s cubic-bezier(1, 0, 1, 0);

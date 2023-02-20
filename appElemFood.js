@@ -488,3 +488,164 @@ new foodSection(
             "18.50",
             'section.pancake-sweet'
         ).render();
+
+new foodSection(
+    "Desery",
+    "dessert",
+    "main",
+    "",
+).render();
+
+        new MenuDish(
+            "Tiramisu klasyczne",
+            "Włoski deser z mascarpone przełożony nasączonymi w kawie i alkoholu biszkoptami.",
+            "11.50",
+            'section.dessert'
+        ).render();
+
+        new MenuDish(
+            "Jabłecznik",
+            "Klasyczny jabłecznik podany z lodem i bitą śmietaną.",
+            "15.50",
+            'section.dessert'
+        ).render();
+
+        new MenuDish(
+            "Sernik",
+            "Sernik rossa z gorącymi wiśniami i bitą śmietaną.",
+            "15.50",
+            'section.dessert'
+        ).render();
+
+        new MenuDish(
+            "Brownie czekoladowe",
+            "Z lodem waniliowym.",
+            "14.50",
+            'section.dessert'
+        ).render();
+
+        new MenuDish(
+            "Mini Pavlova",
+            "Wypiekane przez nas bezy z kremem mascarpone, konfitura rabarbarowa.",
+            "10.50",
+            'section.dessert'
+        ).render();
+
+        new MenuDish(
+            "Chałwa w czekoladzie",
+            "Czekoladowy krem z wiśnią i chałwą.",
+            "10.50",
+            'section.dessert'
+        ).render();
+
+new foodSection(
+    "Napoje zimne",
+    "potable",
+    "main",
+    "",
+).render();
+
+        new MenuDish(
+            "Karafka wody",
+            "Karafka wody / 1L.",
+            "9.50",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Karafka soków",
+            "Karafka soków / 1L.",
+            "15.50",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Karafka lemoniady cytrynowej",
+            "Karafka lemoniady cytrynowej/ 1L.",
+            "23.50",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Lemoniada",
+            "Lemoniada / 300 ML.",
+            "13.50",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Świeży sok",
+            "Sok ze świeżych pomarańczy.",
+            "15.50",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Coca-Cola",
+            "Coca-Cola / 0,25 L.",
+            "8.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Fanta",
+            "Fanta / 0,25 L.",
+            "8.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Sprite",
+            "Sprite / 0,25 L.",
+            "8.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Kinley ",
+            "Kinley  / 0,25 L.",
+            "8.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Kropla Beskidu ",
+            "Kropla Beskidu gaz / 0,33 L.",
+            "7.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Kropla Beskidu ",
+            "Kropla Beskidu n.gaz / 0,33 L.",
+            "7.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Furę",
+            "Furę / 0,25 L.",
+            "8.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Cappy",
+            "Cappy /0,25 L.",
+            "8.00",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Biorn / 0,25 L",
+            "Biorn / 0,25 L.",
+            "8.50",
+            'section.potable'
+        ).render();
+
+        new MenuDish(
+            "Red Bull",
+            "Red Bull / 0,25 L.",
+            "8.50",
+            'section.potable'
+        ).render();
