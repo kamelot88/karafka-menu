@@ -35,9 +35,8 @@ for(let line of lineVerticalCol) {
 } 
 
 collectionSection.forEach(item => {
-    
     item.addEventListener('click', (event) => {
-        rotateLine(verticalLine);
+        // rotateLine(verticalLine);
         if(event.target.matches('.show-more') || event.target.matches('.line')) {
             let sectionParent = event.target.closest('section');
             let verticalLine = sectionParent.children[0].children[1];
