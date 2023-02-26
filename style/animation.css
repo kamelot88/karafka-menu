@@ -4,6 +4,20 @@
 .animation-left {
     transition: left 1s ease-out;
 }
+/*! Rotate arrow */
+.ratete-arrow {
+    animation: 2.5s linear infinite rotate;
+}
+@keyframes rotate {
+    from {
+      transform: rotateY(0deg);;
+    }
+  
+    to {
+      transform: rotateY(360deg);;
+    }
+  }
+/*! End */
 .rotate-line {
     rotate: 90deg;
 }
@@ -57,3 +71,4 @@
 .body-overflow {
     overflow: hidden;
 }
+
